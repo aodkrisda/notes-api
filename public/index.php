@@ -1,9 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>REST API for Notes and Reminders</title>
-    <body>
-        <h1>It works!</h1>
-    </body>
-</html>
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+// Instantiate the app
+$settings = require __DIR__ . '/../app/settings.php';
+$app = new \Slim\App($settings);
+
+$app->get('/', function ($req, $res, $args) {
+    return $res->withHeader('Content-type', 'application/json')
+    ->write(json_encode([
+        'greeting' => 'Welcome to this awesome REST API!'
+    ]));
+});
+
+// Run!
+$app->run();
