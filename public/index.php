@@ -8,12 +8,7 @@ $app = new \Slim\App($settings);
 
 require __DIR__ . '/../app/dependencies.php';
 
-$app->get('/', function ($req, $res, $args) {
-    return $res->withHeader('Content-type', 'application/json')
-    ->write(json_encode([
-        'greeting' => 'Welcome to this awesome REST API!'
-    ]));
-});
+require __DIR__ . '/../app/routes.php';
 
 // Run!
 $app->run();
