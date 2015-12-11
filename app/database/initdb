@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+
+chdir(__DIR__ . '/../../');
+
+require 'vendor/autoload.php';
+
+array_shift($argv);
+$path = '/' . implode('/', $argv);
+
+$settings = require 'app/settings.php';
+
+$settings['environment'] = \Slim\Http\Environment::mock([
+    'PATH_INFO' => $path
+]);
+
+$app = new \Slim\App($settings);
+
+require 'app/dependencies.php';
+
+$app->get('/', function () {
+    require 'InitDB.php';
+    $obj = new InitDB();
+    $obj->exec();
+});
+
+$app->run();
