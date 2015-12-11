@@ -5,6 +5,7 @@ $container = $app->getContainer();
 
 require __DIR__ . '/database/bootstrap.php';
 
+
 // -----------------------------------------------------------------------------
 // Service factories
 // -----------------------------------------------------------------------------
@@ -12,10 +13,31 @@ require __DIR__ . '/database/bootstrap.php';
 // monolog
 $container['logger'] = function ($c) {
     $settings = $c->get('settings');
+
+    // https://github.com/Seldaek/monolog/blob/master/doc/01-usage.md#customizing-the-log-format
+    // allow breaking lines
+    $formatter = new \Monolog\Formatter\LineFormatter(null, null, true);
+    $stream = new \Monolog\Handler\StreamHandler($settings['logger']['path'], \Monolog\Logger::DEBUG);
+    $stream->setFormatter($formatter);
+
     $logger = new \Monolog\Logger($settings['logger']['name']);
-    $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['logger']['path'], \Monolog\Logger::DEBUG));
+    $logger->pushHandler($stream);
+
     return $logger;
 };
+
+
+// -----------------------------------------------------------------------------
+// Error Handlers
+// -----------------------------------------------------------------------------
+
+unset($app->getContainer()['errorHandler']);
+
+$container['errorHandler'] = function ($c) {
+    $displayErrorDetails = $c->get('settings')['displayErrorDetails'];
+    return new App\Handlers\Error($displayErrorDetails, $c->get('logger'));
+};
+
 
 // -----------------------------------------------------------------------------
 // Action factories
