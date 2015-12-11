@@ -16,22 +16,18 @@ class InitDB
 
     public function runMigrations()
     {
-        $files = glob(self::MIGRATIONS_PATH . '/*.php');
-        $this->run($files);
+        $this->run(self::MIGRATIONS_PATH . '/CreateTables.php');
     }
 
     public function runSeeds()
     {
-        $files = glob(self::SEEDS_PATH . '/*.php');
-        $this->run($files);
+        $this->run(self::SEEDS_PATH . '/DatabaseSeeder.php');
     }
 
-    private function run($files) {
-        foreach ($files as $file) {
-            require_once $file;
-            $class = basename($file, '.php');
-            $obj = new $class;
-            $obj->run();
-        }
+    private function run($file) {
+        require_once $file;
+        $class = basename($file, '.php');
+        $obj = new $class;
+        $obj->run();
     }
 }
