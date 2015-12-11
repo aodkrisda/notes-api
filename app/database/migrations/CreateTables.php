@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Database\Capsule\Manager as DB;
 
 require 'CreateUsersTable.php';
 require 'CreateNotesTable.php';
