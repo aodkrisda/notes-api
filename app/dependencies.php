@@ -3,6 +3,7 @@
 
 $container = $app->getContainer();
 
+require __DIR__ . '/database/bootstrap.php';
 
 // -----------------------------------------------------------------------------
 // Service factories

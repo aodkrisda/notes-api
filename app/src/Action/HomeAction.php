@@ -20,7 +20,7 @@ final class HomeAction
 
     public function dispatch(Request $request, Response $response, $args)
     {
-        $this->logger->info("Home page action dispatched");
+        // $this->logger->info("Home page action dispatched");
 
         return $response->write(json_encode([
             'greeting' => 'Welcome to this awesome REST API!'
