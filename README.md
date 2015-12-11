@@ -16,3 +16,4 @@ You need to set these environment variables to connect to the database:
 - [Eloquent ORM](https://github.com/illuminate/database)
 - [Monolog](https://github.com/Seldaek/monolog)
 - [Respect Validation](https://github.com/Respect/Validation)
+- [Run Slim 2 from the Command Line](https://akrabat.com/run-a-slim-2-application-from-the-command-line/)
