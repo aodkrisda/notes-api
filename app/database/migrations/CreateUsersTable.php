@@ -11,7 +11,7 @@ class CreateUsersTable
      *
      * @return void
      */
-    function run()
+    public function create()
     {
         DB::schema()->dropIfExists('users');
         DB::schema()->create('users', function($table) {
@@ -21,5 +21,10 @@ class CreateUsersTable
             $table->string('password', 60);
             $table->timestamps();
         });
+    }
+
+    public function drop()
+    {
+        DB::schema()->dropIfExists('users');
     }
 }
