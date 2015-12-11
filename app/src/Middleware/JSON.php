@@ -9,8 +9,8 @@ class JSON
 {
     /**
      * JSON middleware invokable class. It forces Content-Type on the response
-     * to be application/json. It the request Content-Type is json then return
-     * the response with status 415 (Unsupported Media Type)
+     * to be application/json. If the request Content-Type is not json then
+     * return the response with status 415 (Unsupported Media Type)
      *
      * @param  \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param  \Psr\Http\Message\ResponseInterface      $response PSR7 response
