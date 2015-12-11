@@ -22,8 +22,7 @@ final class HomeAction
     {
         $this->logger->info("Home page action dispatched");
 
-        return $response->withHeader('Content-type', 'application/json')
-        ->write(json_encode([
+        return $response->write(json_encode([
             'greeting' => 'Welcome to this awesome REST API!'
         ]));
     }
