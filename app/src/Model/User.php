@@ -25,4 +25,12 @@ class User extends Model
      * @var array
      */
     protected $hidden = ['password'];
+
+    /**
+     * Get the notes for the user.
+     */
+    public function notes()
+    {
+        return $this->hasMany('App\Model\Note');
+    }
 }
