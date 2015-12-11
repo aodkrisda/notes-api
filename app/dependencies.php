@@ -24,3 +24,7 @@ $container['logger'] = function ($c) {
 $container['App\Action\HomeAction'] = function ($c) {
     return new App\Action\HomeAction($c->get('logger'));
 };
+
+$container['App\Action\Notes\IndexAction'] = function ($c) {
+    return new App\Action\Notes\IndexAction($c->get('logger'));
+};
