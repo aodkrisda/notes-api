@@ -31,11 +31,21 @@ $container['logger'] = function ($c) {
 // Error Handlers
 // -----------------------------------------------------------------------------
 
-unset($app->getContainer()['errorHandler']);
+unset($container['errorHandler']);
+unset($container['notFoundHandler']);
 
 $container['errorHandler'] = function ($c) {
     $displayErrorDetails = $c->get('settings')['displayErrorDetails'];
     return new App\Handlers\Error($displayErrorDetails, $c->get('logger'));
+};
+
+$container['notFoundHandler'] = function ($c) {
+    return function ($request, $response) use ($c) {
+        return $c['response']
+            ->withStatus(404)
+            ->withHeader('Content-Type', 'application/json')
+            ->write(json_encode(['message' => 'Page not found']));
+    };
 };
 
 
