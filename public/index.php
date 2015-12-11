@@ -8,6 +8,8 @@ $app = new \Slim\App($settings);
 
 require __DIR__ . '/../app/dependencies.php';
 
+require __DIR__ . '/../app/middlewares.php';
+
 require __DIR__ . '/../app/routes.php';
 
 // Run!
