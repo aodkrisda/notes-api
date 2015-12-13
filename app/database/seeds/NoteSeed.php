@@ -6,7 +6,7 @@ class NoteSeed
 {
     public function run()
     {
-        $user = User::where('name', 'paul')->first();
+        $user = User::where('username', 'paul')->first();
 
         Note::create([
             'body' => 'First note',
@@ -18,7 +18,7 @@ class NoteSeed
             'user_id' => $user->id
         ]);
 
-        $user = User::where('name', 'john')->first();
+        $user = User::where('username', 'john')->first();
 
         Note::create([
             'body' => 'Third note',
