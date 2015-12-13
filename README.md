@@ -1,13 +1,6 @@
 # notes-api
 REST API for Notes and Reminders
-
-#### Connecting to the database
-You need to set these environment variables to connect to the database:
-- DB_DRIVER
-- DB_HOST
-- DB_NAME
-- DB_USER
-- DB_PASS
+Built with Slim Framework, Monolog, Eloquent ORM, Respect Validation and PHP-JWT
 
 #### Issues
 - If you get an error with something like this `Call to undefined function mcrypt_create_iv()` you have to install `mcrypt` extension or if you have already done that you have to enable it. In my case, I'm running the project on a Ubuntu machine, so I did the following steps:
