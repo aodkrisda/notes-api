@@ -3,6 +3,8 @@
 namespace App\Handlers;
 
 use Exception;
+use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Exceptions\NestedValidationException;
 use Psr\Log\LoggerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -28,6 +30,30 @@ class Error
      * @return ResponseInterface
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, Exception $exception)
+    {
+        // TODO Change this to a class approach
+        if ($exception instanceof ValidationException) {
+            return $this->handleValidation($request, $response, $exception);
+        } else {
+            return $this->handleError($request, $response, $exception);
+        }
+
+    }
+
+    private function handleValidation(ServerRequestInterface $request, ResponseInterface $response, NestedValidationException $exception)
+    {
+        $body = json_encode([
+            'message' => 'There was a problem when validating', // TODO pass the message when throw new exception
+            'errors' => $exception->getMessages()
+        ]);
+
+        return $response
+                ->withStatus(400)
+                ->withHeader('Content-type', 'application/json')
+                ->write($body);
+    }
+
+    private function handleError(ServerRequestInterface $request, ResponseInterface $response, Exception $exception)
     {
         $output = $this->renderJsonErrorMessage($exception);
 
