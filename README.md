@@ -9,6 +9,14 @@ You need to set these environment variables to connect to the database:
 - DB_USER
 - DB_PASS
 
+#### Issues
+- If you get an error with something like this `Call to undefined function mcrypt_create_iv()` you have to install `mcrypt` extension or if you have already done that you have to enable it. In my case, I'm running the project on a Ubuntu machine, so I did the following steps:
+```
+$ sudo apt-get install php5-mcrypt
+$ sudo php5enmod mcrypt
+$ sudo service apache2 restart
+```
+
 ## Links
 - [Slim Framework](https://github.com/slimphp/Slim)
 - [slim3-skeleton](https://github.com/akrabat/slim3-skeleton)
@@ -21,3 +29,6 @@ You need to set these environment variables to connect to the database:
 - [PHP-JWT](https://github.com/firebase/php-jwt)
 - [jwt.io](http://jwt.io/)
 - [PHP Authorization with JWT (JSON Web Tokens)](http://www.sitepoint.com/php-authorization-jwt-json-web-tokens/)
+- [JSON API](http://jsonapi.org/)
+- [Cookies vs Tokens. Getting auth right with Angular.JS](https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/)
+- [Ask Auth0](https://ask.auth0.com/)
