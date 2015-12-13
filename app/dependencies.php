@@ -62,5 +62,5 @@ $container['App\Action\Notes\IndexAction'] = function ($c) {
 };
 
 $container['App\Action\LoginAction'] = function ($c) {
-    return new App\Action\LoginAction($c->get('logger'));
+    return new App\Action\LoginAction($c->get('logger'), $c->get('settings'));
 };
