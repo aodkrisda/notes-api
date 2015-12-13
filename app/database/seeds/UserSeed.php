@@ -6,15 +6,17 @@ class UserSeed
     public function run()
     {
         User::create([
-            'name' => 'paul',
+            'name' => 'Paulo First',
+            'username' => 'paul',
             'email' => 'paul@email.com',
-            'password' => md5('paul')
+            'password' => password_hash("paul", PASSWORD_DEFAULT)
         ]);
 
         User::create([
-            'name' => 'john',
+            'name' => 'John Second',
+            'username' => 'john',
             'email' => 'john@email.com',
-            'password' => md5('john')
+            'password' => password_hash("john", PASSWORD_DEFAULT)
         ]);
     }
 }
