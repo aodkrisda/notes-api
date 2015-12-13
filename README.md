@@ -25,3 +25,4 @@ $ sudo service apache2 restart
 - [JSON API](http://jsonapi.org/)
 - [Cookies vs Tokens. Getting auth right with Angular.JS](https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/)
 - [Ask Auth0](https://ask.auth0.com/)
+- [JSON Web Algorithms (JWA) - Specification](https://tools.ietf.org/html/rfc7518)
