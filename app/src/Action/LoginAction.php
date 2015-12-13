@@ -5,6 +5,8 @@ namespace App\Action;
 use Psr\Log\LoggerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Respect\Validation\Validator as v;
+use App\Model\Note;
 
 /**
  *
@@ -20,7 +22,15 @@ final class LoginAction
 
     public function dispatch(Request $request, Response $response, $args)
     {
-        // $this->logger->info("User has logged in");
+        $this->validate($request->getParsedBody());
+
         return $response;
+    }
+
+    private function validate($input) {
+        $validator = v::key('username', v::alnum()->notEmpty()->noWhitespace())
+            ->key('password', v::stringType()->notEmpty()->length(3, 20));
+
+        $validator->assert($input);
     }
 };
