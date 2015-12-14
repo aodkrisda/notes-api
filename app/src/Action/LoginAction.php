@@ -58,7 +58,7 @@ final class LoginAction
         $tokenId    = base64_encode(mcrypt_create_iv(32));
         $issuedAt   = time();
         $notBefore  = $issuedAt + 10;  //Adding 10 seconds
-        $expire     = $notBefore + 60; // Adding 60 seconds
+        $expire     = $notBefore + 600; // Adding 600 seconds
         $serverName = $this->settings->get('serverName');
 
         /*
@@ -75,6 +75,7 @@ final class LoginAction
                 'userName' => $user->username, // User name
             ]
         ];
+        return $data;
     }
 
     private function validate($input) {
