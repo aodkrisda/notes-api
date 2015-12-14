@@ -16,7 +16,7 @@ class CreateNotesTable
         DB::schema()->create('notes', function($table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('body');
+            $table->mediumText('body');
             $table->timestamps();
 
             $table->foreign('user_id')
