@@ -58,7 +58,7 @@ $container['App\Action\HomeAction'] = function ($c) {
 };
 
 $container['App\Action\Notes\IndexAction'] = function ($c) {
-    return new App\Action\Notes\IndexAction($c->get('logger'));
+    return new App\Action\Notes\IndexAction($c);
 };
 
 $container['App\Action\LoginAction'] = function ($c) {
