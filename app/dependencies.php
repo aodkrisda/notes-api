@@ -60,6 +60,9 @@ $container['App\Action\HomeAction'] = function ($c) {
 $container['App\Action\Notes\IndexAction'] = function ($c) {
     return new App\Action\Notes\IndexAction($c);
 };
+$container['App\Action\Notes\CreateAction'] = function ($c) {
+    return new App\Action\Notes\CreateAction($c);
+};
 
 $container['App\Action\LoginAction'] = function ($c) {
     return new App\Action\LoginAction($c->get('logger'), $c->get('settings'));
