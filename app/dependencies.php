@@ -60,8 +60,8 @@ $container['App\Action\HomeAction'] = function ($c) {
 $container['Notes\IndexAction'] = function ($c) {
     return new App\Action\Notes\IndexAction($c);
 };
-$container['Notes\CreateAction'] = function ($c) {
-    return new App\Action\Notes\CreateAction($c);
+$container['Notes\SaveAction'] = function ($c) {
+    return new App\Action\Notes\SaveAction($c);
 };
 $container['Notes\DeleteAction'] = function ($c) {
     return new App\Action\Notes\DeleteAction($c);
