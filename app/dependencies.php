@@ -57,10 +57,10 @@ $container['App\Action\HomeAction'] = function ($c) {
     return new App\Action\HomeAction($c->get('logger'));
 };
 
-$container['App\Action\Notes\IndexAction'] = function ($c) {
+$container['Notes\IndexAction'] = function ($c) {
     return new App\Action\Notes\IndexAction($c);
 };
-$container['App\Action\Notes\CreateAction'] = function ($c) {
+$container['Notes\CreateAction'] = function ($c) {
     return new App\Action\Notes\CreateAction($c);
 };
 $container['Notes\DeleteAction'] = function ($c) {
