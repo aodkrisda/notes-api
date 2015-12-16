@@ -63,6 +63,9 @@ $container['App\Action\Notes\IndexAction'] = function ($c) {
 $container['App\Action\Notes\CreateAction'] = function ($c) {
     return new App\Action\Notes\CreateAction($c);
 };
+$container['Notes\DeleteAction'] = function ($c) {
+    return new App\Action\Notes\DeleteAction($c);
+};
 
 $container['App\Action\LoginAction'] = function ($c) {
     return new App\Action\LoginAction($c->get('logger'), $c->get('settings'));
